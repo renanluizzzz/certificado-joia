@@ -1,0 +1,500 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Kells Card · Anel Rosé Soho</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+/* Layout: one collectible card on a navy table; frente/verso flip; legend of the card system below. Single dark look (portal do comprador). */
+:root{
+  color-scheme: dark;
+  --navy:#0B1D3A; --navy-2:#1C3260; --ink:#14213A; --parch:#F6F1E4; --parch-2:#EAE2CC;
+  --gold:#E8C84A; --gold-deep:#A8862A; --white:#FFFFFF; --mist:#B9C3D6; --line:rgba(232,200,74,.35);
+  --r:#E8C84A; --r-deep:#A8862A; --r-soft:rgba(232,200,74,.16);
+  --f-display:"Cormorant Garamond", Georgia, "Times New Roman", serif;
+  --f-cap:"Cinzel Decorative", "Cormorant Garamond", Georgia, serif;
+  --f-body:"IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --f-mono:"IBM Plex Mono", ui-monospace, Consolas, monospace;
+}
+body{background:radial-gradient(120% 80% at 50% 0%, var(--navy-2) 0%, var(--navy) 60%) fixed, var(--navy);color:var(--white);font-family:var(--f-body);min-height:100%;}
+.page{padding-block:28px 56px;padding-left:max(16px, env(safe-area-inset-left, 0px));padding-right:max(16px, env(safe-area-inset-right, 0px));display:flex;flex-direction:column;align-items:center;gap:22px;}
+.head{text-align:center;display:grid;gap:4px;max-width:560px}
+.head .eyebrow{font:500 11px/1 var(--f-mono);letter-spacing:.22em;text-transform:uppercase;color:var(--mist)}
+.head h1{font:600 clamp(26px,5vw,36px)/1.1 var(--f-display);margin:0;text-wrap:balance}
+.head p{margin:0;color:var(--mist);font-size:13px;line-height:1.5}
+
+/* ---------- card shell ---------- */
+.stage{perspective:1400px;width:min(380px, 100%);}
+.card{position:relative;width:100%;aspect-ratio:63/88;transform-style:preserve-3d;transition:transform .8s cubic-bezier(.2,.7,.2,1);container-type:inline-size;}
+.card.flipped{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:4.4cqw;overflow:hidden;
+  background:
+    repeating-radial-gradient(circle at 0 0, rgba(255,255,255,.035) 0 1px, transparent 1px 7px),
+    repeating-radial-gradient(circle at 100% 100%, rgba(255,255,255,.035) 0 1px, transparent 1px 7px),
+    linear-gradient(160deg, var(--navy-2), var(--navy) 55%, #08152B);
+  box-shadow:0 30px 60px -20px rgba(0,0,0,.7), 0 0 0 1px rgba(255,255,255,.06);
+  padding:3.4cqw;display:flex;flex-direction:column;gap:1.8cqw;}
+.face::before{content:"";position:absolute;inset:1.6cqw;border:1px solid var(--r);border-radius:3.2cqw;pointer-events:none;opacity:.75}
+.face::after{content:"";position:absolute;inset:2.3cqw;border:1px solid var(--r);border-radius:2.6cqw;pointer-events:none;opacity:.3}
+.back{transform:rotateY(180deg)}
+.sheen{position:absolute;inset:0;pointer-events:none;mix-blend-mode:screen;opacity:0;transition:opacity .3s;z-index:5;
+  background:linear-gradient(115deg, transparent 30%, rgba(255,255,255,.18) 45%, rgba(232,200,74,.14) 52%, transparent 65%);background-size:250% 250%;}
+.stage:hover .sheen{opacity:1}
+
+/* ---------- title plate ---------- */
+.plate{position:relative;z-index:1;display:flex;align-items:center;gap:2cqw;background:linear-gradient(180deg, var(--parch), var(--parch-2));color:var(--ink);
+  border-radius:2.2cqw;padding:1.6cqw 1.8cqw;box-shadow:inset 0 0 0 1px var(--r-deep), 0 1px 0 rgba(255,255,255,.4);}
+.pips{display:flex;gap:1cqw;flex:none}
+.pip{width:7.4cqw;height:7.4cqw;border-radius:50%;display:grid;place-items:center;background:var(--navy);color:var(--white);box-shadow:inset 0 0 0 1px var(--r);}
+.pip svg{width:4.8cqw;height:4.8cqw}
+.pip.metal{flex-direction:column;gap:0;line-height:1}
+.pip.metal b{font:600 2.5cqw/1 var(--f-mono);letter-spacing:-.02em}
+.pip.metal i{font:400 1.7cqw/1 var(--f-mono);font-style:normal;color:var(--mist);margin-top:.3cqw}
+.pip.gem{color:#F3A9C3}
+.pip.rar{color:var(--r)}
+.title{flex:1;min-width:0}
+.title h2{margin:0;font:700 4.1cqw/1.02 var(--f-display);letter-spacing:-.005em;text-wrap:balance}
+.title small{display:block;font:500 2.3cqw/1 var(--f-body);letter-spacing:.14em;text-transform:uppercase;color:#5A6378;margin-top:.8cqw}
+.seal{flex:none;width:9.6cqw;height:9.6cqw;border-radius:50%;background:var(--navy);display:grid;place-items:center;position:relative;box-shadow:inset 0 0 0 1px var(--r), 0 0 0 .6cqw var(--parch), 0 0 0 .8cqw var(--r-deep)}
+.seal span{font:700 5.6cqw/1 var(--f-cap);color:var(--r);transform:translateY(.2cqw)}
+
+/* ---------- art window ---------- */
+.art{position:relative;z-index:1;flex:none;height:47cqw;border-radius:1.6cqw;background:#fff;overflow:hidden;box-shadow:inset 0 0 0 1px var(--r-deep), 0 0 0 .8cqw rgba(11,29,58,.9), 0 0 0 1cqw var(--r);}
+.art img,.art video{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;object-position:50% 50%;transition:opacity .35s}
+.art img[aria-hidden="true"]{opacity:0}
+.art video{cursor:ew-resize;touch-action:pan-y}
+.knot{position:absolute;width:5.4cqw;height:5.4cqw;color:var(--r-deep);z-index:2;pointer-events:none}
+.knot.tl{top:.8cqw;left:.8cqw}.knot.tr{top:.8cqw;right:.8cqw;transform:scaleX(-1)}.knot.bl{bottom:.8cqw;left:.8cqw;transform:scaleY(-1)}.knot.br{bottom:.8cqw;right:.8cqw;transform:scale(-1)}
+.nav{position:absolute;top:50%;translate:0 -50%;z-index:3;width:7.6cqw;height:7.6cqw;border-radius:50%;border:0;background:rgba(11,29,58,.82);color:#fff;display:grid;place-items:center;cursor:pointer}
+.nav:hover{background:var(--navy)}
+.nav svg{width:3.6cqw;height:3.6cqw}
+.nav.prev{left:2cqw}.nav.next{right:2cqw}
+.b360{position:absolute;right:2cqw;bottom:2cqw;z-index:3;border:0;border-radius:99px;padding:1.1cqw 2.2cqw;background:rgba(11,29,58,.86);color:#fff;font:500 2.5cqw/1 var(--f-mono);letter-spacing:.06em;cursor:pointer;display:flex;align-items:center;gap:1cqw}
+.b360[aria-pressed="true"]{background:var(--r);color:var(--navy)}
+.dots{position:absolute;left:2.4cqw;bottom:2.6cqw;z-index:3;display:flex;gap:1cqw}
+.dots i{width:1.6cqw;height:1.6cqw;border-radius:50%;background:rgba(11,29,58,.25)}
+.dots i.on{background:var(--navy)}
+.hint360{position:absolute;left:0;right:0;top:2.2cqw;z-index:3;text-align:center;font:500 2.2cqw/1 var(--f-mono);color:#5A6378;letter-spacing:.08em}
+
+/* ---------- type line ---------- */
+.typeline{position:relative;z-index:1;display:flex;align-items:center;justify-content:space-between;gap:2cqw;background:linear-gradient(180deg, var(--parch), var(--parch-2));color:var(--ink);border-radius:1.6cqw;padding:1.2cqw 2cqw;box-shadow:inset 0 0 0 1px var(--r-deep);}
+.typeline span{font:600 3.3cqw/1.1 var(--f-display);min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.rarity{display:flex;align-items:center;gap:1cqw;flex:none;font:600 2.1cqw/1 var(--f-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--ink)}
+.rarity svg{width:4.6cqw;height:4.6cqw;color:var(--r-deep)}
+
+/* ---------- text box ---------- */
+.textbox{position:relative;z-index:1;flex:1;min-height:0;overflow:hidden;background:var(--parch);color:var(--ink);border-radius:1.6cqw;padding:2cqw 2.4cqw 2.2cqw;box-shadow:inset 0 0 0 1px var(--r-deep);display:flex;flex-direction:column;gap:1.4cqw;}
+.by{font:italic 500 3.1cqw/1 var(--f-display);color:#3A4560}
+.by b{font-style:normal;font-weight:700;color:var(--ink)}
+.specs{display:grid;grid-template-columns:1fr 1fr;gap:1cqw 3cqw;margin:0}
+.specs div{display:flex;flex-direction:column;gap:.3cqw;min-width:0;border-top:1px solid rgba(20,33,58,.14);padding-top:.8cqw}
+.specs dt{font:500 1.85cqw/1 var(--f-body);letter-spacing:.14em;text-transform:uppercase;color:#5A6378}
+.specs dd{margin:0;font:500 2.6cqw/1.15 var(--f-mono);font-variant-numeric:tabular-nums;color:var(--ink)}
+.specs .wide{grid-column:1 / -1}
+.actions{display:flex;align-items:center;justify-content:space-between;gap:2cqw;margin-top:auto}
+.gia{border:1px solid var(--ink);background:transparent;color:var(--ink);border-radius:99px;padding:1.1cqw 2.6cqw;font:600 2.3cqw/1 var(--f-body);letter-spacing:.1em;text-transform:uppercase;cursor:pointer}
+.gia:hover{background:var(--ink);color:var(--parch)}
+.pt{background:var(--navy);color:#fff;border-radius:1.4cqw;padding:1cqw 2.2cqw;font:700 3.6cqw/1 var(--f-display);box-shadow:0 0 0 .5cqw var(--parch), 0 0 0 .8cqw var(--r-deep)}
+.pt small{font:500 2cqw/1 var(--f-mono);color:var(--mist);margin-left:.6cqw}
+.giapanel{position:absolute;inset:0;background:var(--parch);border-radius:1.6cqw;padding:2.4cqw;display:flex;flex-direction:column;gap:1.4cqw;z-index:2}
+.giapanel h3{margin:0;font:700 3.6cqw/1 var(--f-display)}
+.giapanel p{margin:0;font:400 2.3cqw/1.4 var(--f-body);color:#3A4560}
+.giapanel .row{display:flex;justify-content:space-between;font:500 2.4cqw/1.2 var(--f-mono);border-top:1px solid rgba(20,33,58,.14);padding-top:.8cqw}
+.giapanel .row em{font-style:normal;color:#8A5A12}
+.giapanel .bar{display:flex;gap:2cqw;margin-top:auto}
+.giapanel a,.giapanel button{font:600 2.2cqw/1 var(--f-body);letter-spacing:.08em;text-transform:uppercase;color:var(--ink);border:1px solid var(--ink);border-radius:99px;padding:1.1cqw 2.4cqw;background:transparent;cursor:pointer;text-decoration:none}
+
+/* ---------- Kells ID swipe ---------- */
+.swipe{position:relative;z-index:1;height:7.6cqw;border-radius:99px;background:rgba(255,255,255,.06);box-shadow:inset 0 0 0 1px var(--line);overflow:hidden;flex:none;user-select:none;touch-action:none}
+.swipe .lbl{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font:500 2.3cqw/1 var(--f-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--mist);padding-left:7cqw}
+.swipe .fill{position:absolute;inset:0 auto 0 0;width:0;background:linear-gradient(90deg, var(--r-soft), rgba(232,200,74,.3))}
+.swipe .knob{position:absolute;top:.7cqw;left:.7cqw;width:6.2cqw;height:6.2cqw;border-radius:50%;background:var(--r);color:var(--navy);display:grid;place-items:center;cursor:grab;outline-offset:2px}
+.swipe .knob:focus-visible{outline:2px solid #fff}
+.swipe .knob svg{width:3.4cqw;height:3.4cqw}
+.swipe .id .x{flex:none;width:6.2cqw;height:6.2cqw;padding:0;border:0;border-radius:50%;background:rgba(255,255,255,.12);color:#fff;display:grid;place-items:center;cursor:pointer}
+.swipe .id .x:hover{background:rgba(255,255,255,.22)}
+.swipe .id .x:focus-visible,.swipe .id #toBack:focus-visible{outline:2px solid #fff;outline-offset:2px}
+.swipe .id .x svg{width:3.4cqw;height:3.4cqw}
+.swipe .id span{flex:1;text-align:center}
+.swipe .id{position:absolute;inset:0;display:none;align-items:center;justify-content:space-between;gap:2cqw;padding:0 2.6cqw 0 .7cqw;font:500 2.5cqw/1 var(--f-mono);color:#fff;font-variant-numeric:tabular-nums}
+.swipe .id a,.swipe .id #toBack{flex:none;color:var(--navy);background:var(--r);border-radius:99px;padding:.9cqw 2cqw;text-decoration:none;font:600 2cqw/1 var(--f-body);letter-spacing:.08em;text-transform:uppercase;cursor:pointer;border:0}
+.swipe.open .id{display:flex}.swipe.open .lbl,.swipe.open .knob{display:none}.swipe.open .fill{width:100%!important}
+.collector{position:relative;z-index:1;display:flex;justify-content:space-between;gap:2cqw;font:400 1.9cqw/1.2 var(--f-mono);color:var(--mist);padding:0 1.4cqw;flex:none}
+
+/* ---------- back ---------- */
+.back .bhead{position:relative;z-index:1;display:flex;align-items:center;justify-content:space-between;padding:1.2cqw 1.6cqw 0}
+.back .bhead span{font:500 2.1cqw/1 var(--f-mono);letter-spacing:.2em;text-transform:uppercase;color:var(--mist)}
+.back .bhead b{font:700 3.6cqw/1 var(--f-cap);color:var(--r);letter-spacing:.06em}
+.folio{position:relative;z-index:1;flex:1;min-height:0;background:var(--parch);color:var(--ink);border-radius:1.6cqw;box-shadow:inset 0 0 0 1px var(--r-deep);padding:3cqw 3.2cqw;overflow:auto;scrollbar-width:thin;scrollbar-color:var(--r-deep) transparent;display:flex;flex-direction:column;gap:2.4cqw}
+.story{display:grid;grid-template-columns:1fr 20cqw;gap:2.6cqw;align-items:start}
+.story h3{margin:0 0 1.2cqw;font:700 4.6cqw/1 var(--f-display)}
+.story p{margin:0;font:400 2.65cqw/1.5 var(--f-body);color:#2A3550}
+.cap{float:left;width:10.4cqw;height:10.4cqw;margin:.4cqw 1.6cqw 0 0;border-radius:1cqw;background:var(--navy);display:grid;place-items:center;box-shadow:inset 0 0 0 1px var(--r), 0 0 0 .5cqw var(--parch), 0 0 0 .7cqw var(--r-deep)}
+.cap span{font:700 7cqw/1 var(--f-cap);color:var(--r);transform:translateY(.3cqw)}
+.artist{display:grid;gap:.8cqw}
+.artist .ph{aspect-ratio:3/4;border-radius:1cqw;background:linear-gradient(160deg, var(--navy-2), var(--navy));display:grid;place-items:center;box-shadow:0 0 0 .5cqw var(--parch), 0 0 0 .7cqw var(--r-deep)}
+.artist .ph span{font:700 9cqw/1 var(--f-cap);color:var(--r)}
+.artist small{font:500 1.9cqw/1.25 var(--f-mono);color:#5A6378;text-align:center}
+.ficha{margin:0;display:grid;gap:0}
+.ficha div{display:grid;grid-template-columns:24cqw 1fr;gap:2cqw;padding:1.1cqw 0;border-top:1px solid rgba(20,33,58,.13)}
+.ficha dt{font:500 2cqw/1.35 var(--f-body);letter-spacing:.1em;text-transform:uppercase;color:#5A6378}
+.ficha dd{margin:0;font:400 2.55cqw/1.4 var(--f-body);color:var(--ink)}
+.ficha dd.mono{font-family:var(--f-mono);font-variant-numeric:tabular-nums}
+.ficha dd.todo{color:#8A5A12;font-style:italic}
+.bfoot{position:relative;z-index:1;display:flex;align-items:center;gap:2.4cqw;padding:0 1.4cqw;flex:none}
+.qr{width:11cqw;height:11cqw;background:#fff;border-radius:1cqw;padding:1cqw;flex:none}
+.qr canvas{width:100%;height:100%;image-rendering:pixelated;display:block}
+.bfoot .txt{flex:1;min-width:0;display:grid;gap:.6cqw}
+.bfoot .txt b{font:700 3cqw/1 var(--f-cap);letter-spacing:.08em;color:#fff}
+.bfoot .txt span{font:italic 500 2.6cqw/1.2 var(--f-display);color:var(--mist)}
+.bfoot .txt code{font:400 1.9cqw/1.2 var(--f-mono);color:var(--mist);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.bfoot svg.rings{width:11cqw;height:11cqw;color:var(--r);flex:none}
+
+/* ---------- controls + legend ---------- */
+.controls{display:flex;flex-wrap:wrap;justify-content:center;gap:10px}
+.btn{border:1px solid var(--line);background:rgba(255,255,255,.04);color:#fff;border-radius:99px;padding:10px 18px;font:500 13px/1 var(--f-body);cursor:pointer;display:inline-flex;align-items:center;gap:8px}
+.btn:hover{background:rgba(255,255,255,.1)}
+.btn.primary{background:var(--gold);color:var(--navy);border-color:var(--gold)}
+.btn:focus-visible,.nav:focus-visible,.b360:focus-visible,.gia:focus-visible,.chip:focus-visible{outline:2px solid #fff;outline-offset:2px}
+.legend{width:min(720px,100%);display:grid;gap:18px;border-top:1px solid rgba(255,255,255,.1);padding-top:22px}
+.legend h3{margin:0;font:600 22px/1.1 var(--f-display)}
+.legend .note{margin:0;font-size:13px;color:var(--mist);line-height:1.5;max-width:62ch}
+.lg{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:18px}
+.lg section{display:grid;gap:10px;align-content:start}
+.lg h4{margin:0;font:500 11px/1 var(--f-mono);letter-spacing:.2em;text-transform:uppercase;color:var(--mist)}
+.chips{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.chip{display:flex;align-items:center;gap:10px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.03);color:#fff;border-radius:10px;padding:10px 12px;font:500 13px/1.2 var(--f-body);text-align:left;cursor:pointer}
+.chip svg{width:24px;height:24px;flex:none}
+.chip small{display:block;color:var(--mist);font-size:11px;font-weight:400;margin-top:2px}
+.chip[aria-pressed="true"]{border-color:var(--gold);background:rgba(232,200,74,.1)}
+.chip.static{cursor:default}
+.metals{overflow-x:auto}
+.metals table{border-collapse:collapse;width:100%;font:400 13px/1.2 var(--f-mono);font-variant-numeric:tabular-nums}
+.metals th{font:500 11px/1 var(--f-body);letter-spacing:.12em;text-transform:uppercase;color:var(--mist);text-align:left;padding:6px 8px;border-bottom:1px solid rgba(255,255,255,.15)}
+.metals td{padding:6px 8px;border-bottom:1px solid rgba(255,255,255,.06);vertical-align:top}
+.metals td.on{color:var(--navy);background:var(--gold);font-weight:500;border-radius:4px}
+@media (prefers-reduced-motion: reduce){.card{transition:none}.sheen{display:none}}
+</style>
+
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="g-esmeralda" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"><path d="M8 2.5h8l2.5 2.5v14L16 21.5H8L5.5 19V5z"/><path d="M9.5 6.5h5v11h-5z"/><path d="M8 2.5l1.5 4M16 2.5l-1.5 4M8 21.5l1.5-4M16 21.5l-1.5-4"/></symbol>
+    <symbol id="g-rubi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><ellipse cx="12" cy="12" rx="7" ry="9.5"/><ellipse cx="12" cy="12" rx="3.4" ry="5"/><path d="M12 2.5V7M12 17v4.5M5 12h3.6M15.4 12H19"/></symbol>
+    <symbol id="g-safira" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"><path d="M12 2.5C15.2 7 18.5 10.5 18.5 14.8a6.5 6.5 0 0 1-13 0C5.5 10.5 8.8 7 12 2.5z"/><path d="M12 8.5c1.6 2.3 3 4 3 6.2a3 3 0 0 1-6 0c0-2.2 1.4-3.9 3-6.2z" fill="currentColor" fill-opacity=".35"/></symbol>
+    <symbol id="g-diamante" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"><path d="M3 9l3.5-4.5h11L21 9l-9 11.5z"/><path d="M3 9h18M9 4.5L8 9l4 11.5L16 9l-1-4.5M8 9l4-4.5L16 9"/></symbol>
+    <symbol id="r-treasury" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"><rect x="3.5" y="3" width="17" height="16.5" rx="1.6"/><rect x="6.5" y="6" width="11" height="10.5" rx=".8"/><circle cx="12" cy="10.2" r="1.6"/><path d="M12 11.8v2.6M5.5 19.5v1.8M18.5 19.5v1.8"/></symbol>
+    <symbol id="r-art" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"><path d="M3 8V3h5M16 3h5v5M21 16v5h-5M8 21H3v-5"/><circle cx="12" cy="12" r="5"/><path d="M10.2 7.4l1.6 3-1.3 1.8 2 2-.6 3.2M11.8 10.4l2.6-.8M12.5 14.2l2.8.4"/></symbol>
+    <symbol id="r-unique" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"><path d="M6 19V9.5a6 6 0 0 1 12 0V19"/><path d="M4 19h16v2.4H4z"/><circle cx="12" cy="10" r="2.4"/><path d="M12 8.8a1.2 1.2 0 1 1-1.1 1.6M12 12.4V18M12 15.5c-1.3-.2-2.2-.9-2.6-1.9M12 16c1.3-.3 2.1-1 2.5-2"/></symbol>
+    <symbol id="r-eco" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"><path d="M6.5 17.5C5.5 9.5 10.5 3.5 19.5 3c.6 8.6-4.6 14.3-13 14.5z"/><path d="M6.5 17.5L15 8.5M10 13.5l-.4-3M12.8 10.8l2.8-.4M8 21c-.6-1.4-1-2.6-1.5-3.5"/></symbol>
+    <symbol id="knot" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M2 12C2 6 6 2 12 2M2 12c4 0 6-2 6-6M12 2c0 4-2 6-6 6"/><circle cx="7" cy="7" r="2"/><path d="M2 20V12M20 2h-8"/></symbol>
+    <symbol id="rings" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="15" cy="15" r="8"/><circle cx="25" cy="15" r="8"/><circle cx="15" cy="25" r="8"/><circle cx="25" cy="25" r="8"/><circle cx="20" cy="20" r="18.5" stroke-opacity=".5"/></symbol>
+    <symbol id="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></symbol>
+  </defs>
+</svg>
+
+<main class="page">
+  <header class="head">
+    <span class="eyebrow">Kells · Certificado em card · nº 0003</span>
+    <h1>Anel de noivado Soho Design</h1>
+    <p>Toque nas setas para ver as fotos, em “360°” para girar a peça e deslize a barra para revelar o Kells ID.</p>
+  </header>
+
+  <div class="stage" id="stage">
+    <article class="card" id="card" aria-label="Certificado Kells em formato de card">
+      <!-- ================= FRENTE ================= -->
+      <section class="face front" aria-label="Frente">
+        <div class="sheen" id="sheen1"></div>
+        <div class="plate">
+          <div class="pips">
+            <span class="pip metal" title="Ouro 14K · teor 585"><b>585</b><i>Au</i></span>
+            <span class="pip gem" title="Gema: diamante (brilhante)"><svg><use href="#g-diamante"/></svg></span>
+          </div>
+          <div class="title">
+            <h2>Anel de noivado de ouro branco com diamante rosa</h2>
+            <small>By Soho Design</small>
+          </div>
+          <span class="seal" title="Selo do ateliê: Soho Design"><span>S</span></span>
+        </div>
+
+        <div class="art" id="art">
+          <img src="assets/f1.jpg" alt="Anel visto de frente: diamante rosa central entre duas pedras laterais incolores">
+          <img src="assets/f2.jpg" alt="Anel em ângulo, mostrando as garras da pedra central" aria-hidden="true">
+          <img src="assets/f3.jpg" alt="Anel visto por trás, mostrando a galeria e o aro" aria-hidden="true">
+          <img src="assets/f4.jpg" alt="Anel de perfil" aria-hidden="true">
+          <video id="v360" src="assets/ring360.mp4" muted playsinline loop preload="metadata" hidden></video>
+          <span class="hint360" id="hint360" hidden>ARRASTE PARA GIRAR</span>
+          <svg class="knot tl"><use href="#knot"/></svg><svg class="knot tr"><use href="#knot"/></svg>
+          <svg class="knot bl"><use href="#knot"/></svg><svg class="knot br"><use href="#knot"/></svg>
+          <button class="nav prev" id="prev" aria-label="Foto anterior"><svg style="transform:scaleX(-1)"><use href="#chev"/></svg></button>
+          <button class="nav next" id="next" aria-label="Próxima foto"><svg><use href="#chev"/></svg></button>
+          <div class="dots" id="dots"></div>
+          <button class="b360" id="b360" aria-pressed="false">↻ 360°</button>
+        </div>
+
+        <div class="typeline">
+          <span>Anel — Três pedras</span>
+          <span class="rarity" id="rarityTag"><svg><use href="#r-treasury"/></svg><b id="rarityName">Treasury</b></span>
+        </div>
+
+        <div class="textbox">
+          <div class="by">Peça certificada por <b>Soho Design</b></div>
+          <dl class="specs">
+            <div><dt>Metal</dt><dd>Ouro branco 14K</dd></div>
+            <div><dt>Peso total</dt><dd>3,80 g</dd></div>
+            <div><dt>Gema</dt><dd>Diamante</dd></div>
+            <div><dt>Formato</dt><dd>Round Brilliant</dd></div>
+            <div><dt>Cor · Pureza</dt><dd>F · SI1</dd></div>
+            <div><dt>Lapidação</dt><dd>Excellent</dd></div>
+            <div class="wide"><dt>Medidas</dt><dd>6,41 – 6,43 × 3,97 mm</dd></div>
+          </dl>
+          <div class="actions">
+            <button class="gia" id="giaBtn">GIA Report</button>
+            <span class="pt" title="Peso da gema">1,01<small>ct</small></span>
+          </div>
+          <div class="giapanel" id="giaPanel" hidden>
+            <h3>Laudo gemológico</h3>
+            <p>Laudo emitido pelo GIA para a gema central. O número do laudo confere com a gravação a laser na cintura da pedra.</p>
+            <div class="row"><span>Laboratório</span><span>GIA</span></div>
+            <div class="row"><span>Nº do laudo</span><em>a anexar</em></div>
+            <div class="row"><span>Peso</span><span>1,01 ct</span></div>
+            <div class="row"><span>Cor · Pureza · Lap.</span><span>F · SI1 · EX</span></div>
+            <div class="bar">
+              <a href="https://www.gia.edu/report-check-landing" target="_blank" rel="noopener">Verificar no GIA ↗</a>
+              <button id="giaClose">Fechar</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="swipe" id="swipe">
+          <div class="fill" id="swFill"></div>
+          <div class="lbl">Deslize para o Kells ID</div>
+          <div class="knob" id="knob" tabindex="0" role="button" aria-label="Deslize ou pressione Enter para revelar o Kells ID"><svg><use href="#chev"/></svg></div>
+          <div class="id"><button id="idClose" class="x" aria-label="Fechar o Kells ID"><svg style="transform:scaleX(-1)"><use href="#chev"/></svg></button><span>KLS-2026-0721-0003</span><button id="toBack">Ver verso</button></div>
+        </div>
+        <div class="collector"><span>0003 · BR · 21.07.2026</span><span>Foto: Soho Design</span></div>
+      </section>
+
+      <!-- ================= VERSO ================= -->
+      <section class="face back" aria-label="Verso">
+        <div class="sheen"></div>
+        <div class="bhead"><span>Verso · Folio</span><b>KELLS</b><span>nº 0003</span></div>
+        <div class="folio">
+          <div class="story">
+            <div>
+              <h3>História da peça</h3>
+              <p><span class="cap"><span>S</span></span>oho Design desenhou este anel como um pedido de casamento em três tempos. O diamante rosa ao centro é o presente do casal; as duas pedras laterais em lapidação trilliant marcam o que veio antes e o que vem depois. As garras duplas nos cantos deixam a pedra central aberta à luz, e o aro polido de ouro branco mantém a cor rosa como único protagonista.</p>
+            </div>
+            <div class="artist">
+              <div class="ph"><span>S</span></div>
+              <small>Ateliê<br>Soho Design</small>
+            </div>
+          </div>
+          <dl class="ficha">
+            <div><dt>Nome</dt><dd>Anel de noivado de ouro branco com diamante rosa</dd></div>
+            <div><dt>Especificação</dt><dd>Anel de noivado de três pedras (trilogia)</dd></div>
+            <div><dt>Autoria</dt><dd class="todo">a informar pelo ateliê</dd></div>
+            <div><dt>Destino</dt><dd>Pedido de casamento, uso diário</dd></div>
+            <div><dt>Joalheria</dt><dd>Soho Design</dd></div>
+            <div><dt>Matéria-prima</dt><dd>Ouro branco 14K, diamante rosa central, dois diamantes incolores trilliant</dd></div>
+            <div><dt>Técnicas</dt><dd>Fundição em cera perdida, cravação em garras duplas, polimento manual</dd></div>
+            <div><dt>Motivo</dt><dd>Trilogia: passado, presente e futuro do casal</dd></div>
+            <div><dt>Justificativa</dt><dd>As garras nos cantos expõem a pedra central à luz; as trilliants alargam a peça sem competir com a cor rosa.</dd></div>
+            <div><dt>Direcionamento</dt><dd>Destacar a cor fancy do diamante central com uma montagem limpa e clássica.</dd></div>
+            <div><dt>Processo executivo</dt><dd>Peça de fabricação manual com acabamento espelhado</dd></div>
+            <div><dt>Valor</dt><dd class="todo">a declarar na venda</dd></div>
+            <div><dt>Data</dt><dd class="mono">21.07.2026</dd></div>
+            <div><dt>Proprietário</dt><dd class="mono">SHA-256 · 9f3c…e71a</dd></div>
+          </dl>
+        </div>
+        <div class="bfoot">
+          <div class="qr"><canvas id="qr" width="21" height="21" aria-label="QR code de verificação (ilustrativo)"></canvas></div>
+          <div class="txt">
+            <b>KELLS</b>
+            <span>We build ownership.</span>
+            <code>Registro permanente · KLS-2026-0721-0003</code>
+          </div>
+          <svg class="rings" aria-hidden="true"><use href="#rings"/></svg>
+        </div>
+      </section>
+    </article>
+  </div>
+
+  <div class="controls">
+    <button class="btn primary" id="flip">Virar card</button>
+  </div>
+
+  <section class="legend" aria-label="Sistema do card">
+    <h3>Sistema do card</h3>
+    <p class="note">A raridade muda a cor da moldura e o ícone da linha de tipo. Toque numa raridade para ver o card com ela. A gema e o teor do metal aparecem no topo, à esquerda do nome, como o custo de mana numa carta.</p>
+    <div class="lg">
+      <section>
+        <h4>Raridade</h4>
+        <div class="chips" id="rarChips"></div>
+      </section>
+      <section>
+        <h4>Gema · lapidação</h4>
+        <div class="chips">
+          <div class="chip static" style="color:#59C48B"><svg><use href="#g-esmeralda"/></svg><span style="color:#fff">Esmeralda<small>corte esmeralda</small></span></div>
+          <div class="chip static" style="color:#E2566E"><svg><use href="#g-rubi"/></svg><span style="color:#fff">Rubi<small>corte oval</small></span></div>
+          <div class="chip static" style="color:#6E95F0"><svg><use href="#g-safira"/></svg><span style="color:#fff">Safira<small>corte gota</small></span></div>
+          <div class="chip static" style="color:#F3A9C3;border-color:var(--gold)"><svg><use href="#g-diamante"/></svg><span style="color:#fff">Diamante<small>brilhante · esta peça</small></span></div>
+        </div>
+      </section>
+    </div>
+    <section class="lg" style="grid-template-columns:1fr">
+      <section>
+        <h4>Teor do metal (selo no topo)</h4>
+        <div class="metals">
+          <table>
+            <thead><tr><th>Prata</th><th>Ouro</th><th>Paládio</th><th>Platina</th></tr></thead>
+            <tbody>
+              <tr><td>800</td><td>375 · 9K</td><td>500</td><td>850</td></tr>
+              <tr><td>925</td><td class="on">585 · 14K</td><td>950</td><td>900</td></tr>
+              <tr><td>958</td><td>750 · 18K</td><td>999</td><td>950</td></tr>
+              <tr><td>999</td><td>916 · 22K</td><td></td><td>999</td></tr>
+              <tr><td></td><td>958 · 23K</td><td></td><td></td></tr>
+              <tr><td></td><td>999 · 24K</td><td></td><td></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </section>
+  </section>
+</main>
+
+<script>
+(function(){
+  var card = document.getElementById('card');
+  var stage = document.getElementById('stage');
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---- flip ---- */
+  function flip(){ card.classList.toggle('flipped'); card.style.transform = ''; }
+  document.getElementById('flip').addEventListener('click', flip);
+  document.getElementById('toBack').addEventListener('click', flip);
+
+  /* ---- tilt + sheen ---- */
+  if(!reduce){
+    stage.addEventListener('pointermove', function(e){
+      if(e.pointerType !== 'mouse' || dragging || scrubbing) return;
+      var r = stage.getBoundingClientRect();
+      var x = (e.clientX - r.left)/r.width - .5, y = (e.clientY - r.top)/r.height - .5;
+      var base = card.classList.contains('flipped') ? 180 : 0;
+      card.style.transition = 'transform .12s ease-out';
+      card.style.transform = 'rotateY(' + (base + x*12) + 'deg) rotateX(' + (-y*10) + 'deg)';
+      var s = document.querySelectorAll('.sheen');
+      for(var i=0;i<s.length;i++){ s[i].style.backgroundPosition = (50 + x*100) + '% ' + (50 + y*100) + '%'; }
+    });
+    stage.addEventListener('pointerleave', function(){ card.style.transition = ''; card.style.transform = ''; });
+  }
+
+  /* ---- carousel ---- */
+  var art = document.getElementById('art');
+  var imgs = art.querySelectorAll('img');
+  var dots = document.getElementById('dots');
+  var idx = 0;
+  for(var d=0; d<imgs.length; d++){ dots.appendChild(document.createElement('i')); }
+  function show(n){
+    set360(false);
+    idx = (n + imgs.length) % imgs.length;
+    for(var i=0;i<imgs.length;i++){ imgs[i].setAttribute('aria-hidden', i===idx ? 'false' : 'true'); dots.children[i].className = i===idx ? 'on' : ''; }
+  }
+  document.getElementById('prev').addEventListener('click', function(){ show(idx-1); });
+  document.getElementById('next').addEventListener('click', function(){ show(idx+1); });
+
+  /* ---- 360 video: plays, drag to scrub ---- */
+  var v = document.getElementById('v360'), b360 = document.getElementById('b360'), hint = document.getElementById('hint360');
+  var on360 = false, scrubbing = false, sx = 0, st = 0;
+  function set360(on){
+    on360 = on; v.hidden = !on; hint.hidden = !on; dots.hidden = on;
+    b360.setAttribute('aria-pressed', on ? 'true' : 'false');
+    if(on){ var p = v.play(); if(p && p.catch) p.catch(function(){}); } else { v.pause(); }
+  }
+  b360.addEventListener('click', function(){ if(on360){ show(idx); } else { set360(true); } });
+  v.addEventListener('pointerdown', function(e){ scrubbing = true; sx = e.clientX; st = v.currentTime; v.pause(); v.setPointerCapture(e.pointerId); });
+  v.addEventListener('pointermove', function(e){
+    if(!scrubbing || !v.duration) return;
+    var w = v.getBoundingClientRect().width;
+    var t = st + (e.clientX - sx)/w * v.duration;
+    t = ((t % v.duration) + v.duration) % v.duration;
+    v.currentTime = t;
+  });
+  function endScrub(){ scrubbing = false; }
+  v.addEventListener('pointerup', endScrub); v.addEventListener('pointercancel', endScrub);
+  show(0);
+
+  /* ---- GIA ---- */
+  var gp = document.getElementById('giaPanel');
+  document.getElementById('giaBtn').addEventListener('click', function(){ gp.hidden = false; });
+  document.getElementById('giaClose').addEventListener('click', function(){ gp.hidden = true; });
+
+  /* ---- Kells ID swipe ---- */
+  var sw = document.getElementById('swipe'), knob = document.getElementById('knob'), fill = document.getElementById('swFill');
+  var dragging = false, ox = 0, max = 0;
+  function openId(){ sw.classList.add('open'); var c = document.getElementById('idClose'); if(c) c.focus({preventScroll:true}); }
+  function closeId(){
+    sw.classList.remove('open'); dragging = false;
+    knob.style.transition = 'none'; knob.style.transform = ''; fill.style.width = '0';
+  }
+  document.getElementById('idClose').addEventListener('click', function(){ closeId(); knob.focus({preventScroll:true}); });
+  document.getElementById('toBack').addEventListener('click', function(){ setTimeout(closeId, 800); });
+  knob.addEventListener('pointerdown', function(e){ dragging = true; ox = e.clientX; max = sw.clientWidth - knob.offsetWidth - knob.offsetLeft*2; knob.setPointerCapture(e.pointerId); knob.style.transition='none'; });
+  knob.addEventListener('pointermove', function(e){
+    if(!dragging) return;
+    var dx = Math.max(0, Math.min(max, e.clientX - ox));
+    knob.style.transform = 'translateX(' + dx + 'px)';
+    fill.style.width = (dx + knob.offsetWidth) + 'px';
+    if(dx >= max - 2){ dragging = false; openId(); }
+  });
+  function release(){ if(!dragging) return; dragging = false; knob.style.transition = 'transform .25s'; knob.style.transform = ''; fill.style.width = '0'; }
+  knob.addEventListener('pointerup', release); knob.addEventListener('pointercancel', release);
+  knob.addEventListener('keydown', function(e){ if(e.key === 'Enter' || e.key === ' ' || e.key === 'ArrowRight'){ e.preventDefault(); openId(); } });
+
+  /* ---- rarity system ---- */
+  var RAR = [
+    {k:'treasury', n:'Treasury', d:'cofre · valor patrimonial', c:'#E8C84A', deep:'#A8862A', soft:'rgba(232,200,74,.16)'},
+    {k:'art', n:'Work of Art', d:'moldura · peça autoral', c:'#8FB0F2', deep:'#3B5FB0', soft:'rgba(143,176,242,.18)'},
+    {k:'unique', n:'One of a Kind', d:'redoma · exemplar único', c:'#EE9AB4', deep:'#B04A6A', soft:'rgba(238,154,180,.18)'},
+    {k:'eco', n:'Eco', d:'folha · origem rastreada', c:'#7FD1B8', deep:'#2E8A70', soft:'rgba(127,209,184,.18)'}
+  ];
+  var chips = document.getElementById('rarChips');
+  var tagUse = document.querySelector('#rarityTag use');
+  var tagName = document.getElementById('rarityName');
+  function setRar(i){
+    var r = RAR[i], root = document.documentElement.style;
+    root.setProperty('--r', r.c); root.setProperty('--r-deep', r.deep); root.setProperty('--r-soft', r.soft);
+    tagUse.setAttribute('href', '#r-' + r.k); tagName.textContent = r.n;
+    for(var j=0;j<chips.children.length;j++){ chips.children[j].setAttribute('aria-pressed', j===i ? 'true' : 'false'); }
+  }
+  RAR.forEach(function(r, i){
+    var b = document.createElement('button');
+    b.className = 'chip'; b.type = 'button'; b.id = 'rar-' + r.k; b.style.color = r.c;
+    b.innerHTML = '<svg><use href="#r-' + r.k + '"/></svg><span style="color:#fff">' + r.n + '<small>' + r.d + '</small></span>';
+    b.addEventListener('click', function(){ setRar(i); });
+    chips.appendChild(b);
+  });
+  setRar(0);
+
+  /* ---- QR (ilustrativo, padrão fixo) ---- */
+  var q = document.getElementById('qr').getContext('2d');
+  q.fillStyle = '#fff'; q.fillRect(0,0,21,21); q.fillStyle = '#0B1D3A';
+  function finder(x,y){ q.fillRect(x,y,7,7); q.fillStyle='#fff'; q.fillRect(x+1,y+1,5,5); q.fillStyle='#0B1D3A'; q.fillRect(x+2,y+2,3,3); }
+  finder(0,0); finder(14,0); finder(0,14);
+  var seed = 7303;
+  for(var y=0;y<21;y++){ for(var x=0;x<21;x++){
+    if((x<8&&y<8)||(x>12&&y<8)||(x<8&&y>12)) continue;
+    seed = (seed*1103515245 + 12345) & 0x7fffffff;
+    if(seed % 100 < 46) q.fillRect(x,y,1,1);
+  }}
+})();
+</script>
+
+</body>
+</html>
